@@ -1,6 +1,9 @@
 FROM mysql:8.0
 #### this is os -user
-RUN adduser -r mysqluser   
+RUN adduser -r expense
+    
+    
+
 
 #### these are data base user
 #### root user is the default user for any database so we are setting the root user password
