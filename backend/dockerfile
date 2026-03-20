@@ -14,6 +14,6 @@ ENV DB_HOST="db"
 WORKDIR /opt/backend
 COPY --from=builder /opt/backend /opt/backend
 USER expense
-EXPOSE 8080
+EXPOSE 8081
 CMD [ "node" , "index.js" ]
 
