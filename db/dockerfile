@@ -1,0 +1,16 @@
+FROM mysql:8.0
+#### this is os -user
+RUN adduser -r mysqluser   
+
+#### these are data base user
+#### root user is the default user for any database so we are setting the root user password
+
+RUN MYSQL_ROOT_PASSWORD=ExpenseApp@1 \
+    MYSQL_USER=expense \
+    MYSQL_PASSWORD=ExpenseApp@1 \
+    MYSQL_DATABASE=transactions
+RUN chown -R expense:expense /var/lib/mysql /var/run/mysqld
+#### /var/lib/mysql ------> default directory for data storage for mysql
+##### /var/run/mysqld ------>   here scripts, files will store
+COPY scripts/*.sql /docker-entrypoint-initdb.d/
+
