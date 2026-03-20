@@ -1,6 +1,6 @@
 FROM node:20.18.3-alpine3.21 AS builder
 WORKDIR /opt/backend
-COPY package.json ./
+COPY package*.json ./
 COPY *.js ./
 RUN npm install
 
@@ -14,5 +14,6 @@ ENV DB_HOST="mysql"
 WORKDIR /opt/backend
 COPY --from=builder /opt/backend /opt/backend
 USER expense
+EXPOSE 8080
 CMD [ "node" , "index.js" ]
 
